@@ -48,7 +48,7 @@ module Capybara
             logger.info "Info: visits: requests: #{spider.class.visits[:requests]}, responses: #{spider.class.visits[:responses]}"
           end
 
-          if memory == driver.current_memory
+          if !config.before_request[:skip_memory] && memory = driver.current_memory
             logger.debug "Browser: driver.current_memory: #{memory}"
           end
         end
